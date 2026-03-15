@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio - Nguyễn Thị Ngọc Hà</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;500;600;700;800&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #f4a0b5;
+    --pink-light: #fce4ec;
+    --pink-deep: #e57fa0;
+    --coral: #f5836b;
+    --yellow: #ffd166;
+    --yellow-light: #fff8e1;
+    --green: #6dbf7e;
+    --green-light: #d4edda;
+    --blue: #7ec8e3;
+    --purple: #c5a8de;
+    --cream: #fdf6f0;
+    --cream2: #fef9f5;
+    --text-dark: #5a3e4b;
+    --text-mid: #8a6070;
+    --text-light: #b89aaa;
+    --white: #ffffff;
+    --card-shadow: 0 8px 32px rgba(244,160,181,0.18);
+    --card-radius: 24px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ===== DECORATIVE SVG ELEMENTS ===== */
+  .deco {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    user-select: none;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(253,246,240,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px dashed var(--pink-light);
+    padding: 12px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Caveat', cursive;
+    font-size: 1.6rem;
+    color: var(--pink-deep);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-mid);
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: -3px; left: 0; right: 0;
+    height: 2px; border-radius: 2px;
+    background: var(--pink);
+    transform: scaleX(0);
+    transition: transform 0.2s;
+  }
+  .nav-links a:hover { color: var(--pink-deep); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 120px 40px 80px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(160deg, #fef6f2 0%, #fde8f0 40%, #f0f7ff 100%);
+  }
+
+  /* Floating flowers */
+  .hero-bg {
+    position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+  }
+  .float-el {
+    position: absolute;
+    animation: floatAnim linear infinite;
+  }
+  @keyframes floatAnim {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-18px) rotate(10deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: white;
+    border: 2px solid var(--pink-light);
+    border-radius: 50px;
+    padding: 6px 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--pink-deep);
+    margin-bottom: 20px;
+    box-shadow: 0 4px 16px rgba(244,160,181,0.15);
+    animation: fadeDown 0.7s ease both;
+  }
+
+  .hero-name {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    color: var(--pink-deep);
+    line-height: 1.1;
+    margin-bottom: 8px;
+    animation: fadeDown 0.7s 0.1s ease both;
+    text-shadow: 3px 5px 0 rgba(244,160,181,0.25);
+  }
+
+  .hero-sub {
+    font-family: 'Caveat', cursive;
+    font-size: 1.6rem;
+    color: var(--green);
+    margin-bottom: 24px;
+    font-weight: 600;
+    animation: fadeDown 0.7s 0.2s ease both;
+  }
+
+  .hero-desc {
+    max-width: 560px;
+    margin: 0 auto 36px;
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    line-height: 1.75;
+    animation: fadeDown 0.7s 0.3s ease both;
+  }
+
+  .hero-tags {
+    display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 40px;
+    animation: fadeDown 0.7s 0.4s ease both;
+  }
+  .tag {
+    background: white;
+    border: 2px solid var(--pink-light);
+    border-radius: 50px;
+    padding: 5px 16px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-mid);
+    display: flex; align-items: center; gap: 5px;
+  }
+
+  .hero-btns {
+    display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+    animation: fadeDown 0.7s 0.5s ease both;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--pink), var(--pink-deep));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 13px 30px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(229,127,160,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(229,127,160,0.45); }
+  .btn-outline {
+    background: white;
+    color: var(--pink-deep);
+    border: 2px solid var(--pink);
+    border-radius: 50px;
+    padding: 11px 28px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-outline:hover { background: var(--pink-light); transform: translateY(-3px); }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== RAINBOW ===== */
+  .rainbow-svg {
+    position: absolute;
+    bottom: -20px; left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.25;
+    width: 400px;
+  }
+
+  /* ===== SECTION BASE ===== */
+  section { padding: 80px 40px; position: relative; }
+  .section-title {
+    font-family: 'Caveat', cursive;
+    font-size: 2.4rem;
+    color: var(--pink-deep);
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-title .emoji { font-size: 2rem; }
+  .section-line {
+    height: 3px;
+    background: linear-gradient(to right, var(--pink), transparent);
+    border-radius: 3px;
+    width: 80px;
+    margin-bottom: 40px;
+  }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  /* ===== ABOUT ===== */
+  #about { background: var(--cream2); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .about-card {
+    background: white;
+    border-radius: var(--card-radius);
+    padding: 36px;
+    box-shadow: var(--card-shadow);
+    border: 2px solid var(--pink-light);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-card::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 80px; height: 80px;
+    background: radial-gradient(circle at top right, var(--pink-light), transparent 70%);
+  }
+  .about-text { font-size: 1rem; color: var(--text-mid); line-height: 1.8; }
+  .info-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .info-list li {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 0.95rem; color: var(--text-dark); font-weight: 600;
+  }
+  .info-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .info-icon.pink { background: var(--pink-light); }
+  .info-icon.yellow { background: #fff3cd; }
+  .info-icon.green { background: var(--green-light); }
+  .info-icon.blue { background: #e0f4fb; }
+
+  /* ===== SKILLS ===== */
+  #skills { background: white; }
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .skill-card {
+    background: var(--cream2);
+    border-radius: var(--card-radius);
+    padding: 28px 32px;
+    border: 2px solid var(--pink-light);
+  }
+  .skill-card-title {
+    font-family: 'Caveat', cursive;
+    font-size: 1.4rem; font-weight: 700;
+    color: var(--pink-deep); margin-bottom: 22px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .skill-item { margin-bottom: 16px; }
+  .skill-label {
+    display: flex; justify-content: space-between;
+    font-size: 0.9rem; font-weight: 700; color: var(--text-dark);
+    margin-bottom: 6px;
+  }
+  .skill-bar {
+    height: 10px; border-radius: 10px;
+    background: var(--pink-light);
+    overflow: hidden;
+  }
+  .skill-fill {
+    height: 100%; border-radius: 10px;
+    background: linear-gradient(to right, var(--pink), var(--pink-deep));
+    transition: width 1.5s cubic-bezier(.25,.46,.45,.94);
+  }
+
+  /* ===== ACTIVITIES ===== */
+  #activities { background: var(--cream2); }
+  .activities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+  .activity-card {
+    background: white;
+    border-radius: var(--card-radius);
+    padding: 28px 24px;
+    box-shadow: var(--card-shadow);
+    border: 2px solid transparent;
+    transition: transform 0.2s, border-color 0.2s;
+    text-align: center;
+  }
+  .activity-card:hover { transform: translateY(-6px); border-color: var(--pink); }
+  .activity-icon { font-size: 2.5rem; margin-bottom: 14px; }
+  .activity-title { font-weight: 800; font-size: 1rem; color: var(--text-dark); margin-bottom: 8px; }
+  .activity-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; }
+
+  /* ===== PROJECTS ===== */
+  #projects { background: white; }
+  .projects-list { display: flex; flex-direction: column; gap: 32px; }
+  .project-card {
+    background: var(--cream2);
+    border-radius: var(--card-radius);
+    padding: 36px;
+    border: 2px solid var(--pink-light);
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .project-card:hover { box-shadow: var(--card-shadow); }
+  .project-header {
+    display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;
+  }
+  .project-emoji {
+    font-size: 2.2rem; flex-shrink: 0;
+    background: white; border-radius: 16px; padding: 10px;
+    border: 2px solid var(--pink-light);
+  }
+  .project-meta { flex: 1; }
+  .project-title {
+    font-family: 'Caveat', cursive;
+    font-size: 1.6rem; font-weight: 700;
+    color: var(--text-dark); margin-bottom: 4px;
+  }
+  .project-time {
+    font-size: 0.82rem; color: var(--text-light);
+    font-weight: 600; background: white;
+    display: inline-block; padding: 3px 12px;
+    border-radius: 50px; border: 1.5px solid var(--pink-light);
+  }
+  .project-desc { font-size: 0.95rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 20px; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .ptag {
+    background: var(--pink-light);
+    color: var(--pink-deep);
+    font-size: 0.8rem; font-weight: 700;
+    padding: 4px 14px; border-radius: 50px;
+  }
+  .ptag.green { background: var(--green-light); color: #2e7d47; }
+  .ptag.blue { background: #e0f4fb; color: #1a6a80; }
+  .ptag.yellow { background: #fff3cd; color: #856404; }
+
+  .result-badge {
+    position: absolute; top: 20px; right: 20px;
+    background: linear-gradient(135deg, var(--yellow), #ffb347);
+    color: #5a3e00;
+    font-size: 0.8rem; font-weight: 800;
+    padding: 5px 14px; border-radius: 50px;
+    box-shadow: 0 3px 10px rgba(255,209,102,0.4);
+  }
+
+  /* ===== RESEARCH ===== */
+  #research { background: var(--cream2); }
+  .research-card {
+    background: white;
+    border-radius: var(--card-radius);
+    padding: 40px;
+    box-shadow: var(--card-shadow);
+    border: 2px solid var(--pink-light);
+  }
+  .research-title {
+    font-family: 'Caveat', cursive;
+    font-size: 1.8rem; font-weight: 700;
+    color: var(--text-dark); margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .research-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 28px; }
+  .research-block { }
+  .research-block-title {
+    font-size: 0.8rem; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--pink-deep); margin-bottom: 12px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .research-block-title::before {
+    content: '';
+    display: inline-block; width: 8px; height: 8px;
+    border-radius: 50%; background: var(--pink);
+  }
+  .research-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .research-list li {
+    font-size: 0.92rem; color: var(--text-mid); line-height: 1.6;
+    padding-left: 16px; position: relative;
+  }
+  .research-list li::before {
+    content: '✿';
+    position: absolute; left: 0; color: var(--pink); font-size: 0.8rem;
+  }
+
+  /* ===== COMPETITION ===== */
+  #competition { background: white; }
+  .comp-card {
+    background: linear-gradient(135deg, #fff8f2 0%, #fde8f0 100%);
+    border-radius: var(--card-radius);
+    padding: 40px;
+    border: 2px solid var(--pink-light);
+    position: relative;
+    overflow: hidden;
+  }
+  .comp-card::after {
+    content: '🏆';
+    position: absolute; right: 30px; top: 30px;
+    font-size: 4rem; opacity: 0.15;
+  }
+  .comp-title {
+    font-family: 'Caveat', cursive;
+    font-size: 2rem; font-weight: 700;
+    color: var(--text-dark); margin-bottom: 6px;
+  }
+  .comp-subtitle { color: var(--text-mid); font-size: 0.95rem; margin-bottom: 28px; }
+  .comp-awards {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px; margin-bottom: 28px;
+  }
+  .award-item {
+    background: white;
+    border-radius: 16px; padding: 18px;
+    border: 2px solid var(--yellow);
+    text-align: center;
+  }
+  .award-icon { font-size: 1.8rem; margin-bottom: 6px; }
+  .award-text { font-size: 0.88rem; font-weight: 700; color: var(--text-dark); }
+  .award-sub { font-size: 0.78rem; color: var(--text-light); margin-top: 2px; }
+  .comp-qna { margin-top: 20px; }
+  .qna-item {
+    background: white; border-radius: 16px; padding: 16px 20px;
+    margin-bottom: 12px; border-left: 4px solid var(--pink);
+  }
+  .qna-q { font-size: 0.88rem; font-weight: 800; color: var(--text-dark); margin-bottom: 6px; }
+  .qna-a { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; }
+
+  /* ===== FBN SECTION ===== */
+  #fbn { background: var(--cream2); }
+  .fbn-card {
+    background: white;
+    border-radius: var(--card-radius);
+    padding: 40px;
+    box-shadow: var(--card-shadow);
+    border: 2px solid var(--pink-light);
+  }
+  .fbn-stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px; margin: 28px 0;
+  }
+  .stat-box {
+    background: var(--cream2);
+    border-radius: 18px; padding: 20px;
+    text-align: center; border: 2px solid var(--pink-light);
+  }
+  .stat-num {
+    font-family: 'Caveat', cursive;
+    font-size: 2rem; font-weight: 700; color: var(--pink-deep);
+  }
+  .stat-label { font-size: 0.82rem; color: var(--text-mid); font-weight: 600; }
+
+  /* ===== CONTACT ===== */
+  #contact {
+    background: linear-gradient(160deg, #fde8f0 0%, #f0f7ff 100%);
+    text-align: center;
+    padding: 80px 40px 100px;
+  }
+  .contact-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.8rem; color: var(--pink-deep); margin-bottom: 12px;
+  }
+  .contact-sub {
+    font-size: 1.05rem; color: var(--text-mid); margin-bottom: 40px;
+    font-style: italic;
+  }
+  .contact-links {
+    display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+  }
+  .contact-btn {
+    display: flex; align-items: center; gap: 8px;
+    background: white; border-radius: 50px;
+    padding: 12px 24px;
+    font-size: 0.9rem; font-weight: 700;
+    color: var(--text-dark);
+    text-decoration: none;
+    border: 2px solid var(--pink-light);
+    box-shadow: 0 4px 16px rgba(244,160,181,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .contact-btn:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(244,160,181,0.3); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--text-dark);
+    color: var(--pink-light);
+    text-align: center;
+    padding: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    nav { padding: 12px 20px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 0.82rem; }
+    section { padding: 60px 20px; }
+    .about-grid, .skills-grid, .research-grid { grid-template-columns: 1fr; }
+    .hero { padding: 100px 24px 60px; }
+  }
+
+  /* ===== SCROLL ANIMATION ===== */
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">✿ Ngoc Ha</div>
+  <ul class="nav-links">
+    <li><a href="#about">About Me</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#competition">Competition</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <!-- Floating flowers -->
+    <div class="float-el" style="top:8%; left:5%; animation-duration:5.5s; animation-delay:0s;">
+      <svg width="52" height="52" viewBox="0 0 52 52"><circle cx="26" cy="26" r="9" fill="#f5836b"/><ellipse cx="26" cy="11" rx="7" ry="10" fill="#f5836b" opacity=".8"/><ellipse cx="26" cy="41" rx="7" ry="10" fill="#f5836b" opacity=".8"/><ellipse cx="11" cy="26" rx="10" ry="7" fill="#f5836b" opacity=".8"/><ellipse cx="41" cy="26" rx="10" ry="7" fill="#f5836b" opacity=".8"/><circle cx="26" cy="26" r="6" fill="#fff0e0"/></svg>
+    </div>
+    <div class="float-el" style="top:12%; right:7%; animation-duration:6s; animation-delay:1s;">
+      <svg width="44" height="44" viewBox="0 0 44 44"><circle cx="22" cy="22" r="8" fill="#f4a0b5"/><ellipse cx="22" cy="9" rx="6" ry="9" fill="#f4a0b5" opacity=".8"/><ellipse cx="22" cy="35" rx="6" ry="9" fill="#f4a0b5" opacity=".8"/><ellipse cx="9" cy="22" rx="9" ry="6" fill="#f4a0b5" opacity=".8"/><ellipse cx="35" cy="22" rx="9" ry="6" fill="#f4a0b5" opacity=".8"/><circle cx="22" cy="22" r="5" fill="#fff"/></svg>
+    </div>
+    <div class="float-el" style="bottom:15%; left:8%; animation-duration:7s; animation-delay:0.5s;">
+      <svg width="38" height="38" viewBox="0 0 38 38"><circle cx="19" cy="19" r="7" fill="#ffd166"/><ellipse cx="19" cy="8" rx="5" ry="8" fill="#ffd166" opacity=".8"/><ellipse cx="19" cy="30" rx="5" ry="8" fill="#ffd166" opacity=".8"/><ellipse cx="8" cy="19" rx="8" ry="5" fill="#ffd166" opacity=".8"/><ellipse cx="30" cy="19" rx="8" ry="5" fill="#ffd166" opacity=".8"/><circle cx="19" cy="19" r="4" fill="#fff8e1"/></svg>
+    </div>
+    <div class="float-el" style="bottom:20%; right:10%; animation-duration:5s; animation-delay:2s;">
+      <svg width="32" height="40" viewBox="0 0 32 40"><ellipse cx="16" cy="28" rx="10" ry="12" fill="#f4a0b5"/><ellipse cx="16" cy="32" rx="7" ry="8" fill="#e57fa0"/><rect x="14" y="10" width="4" height="20" rx="2" fill="#6dbf7e"/><ellipse cx="10" cy="14" rx="6" ry="4" fill="#6dbf7e" transform="rotate(-30 10 14)"/></svg>
+    </div>
+    <div class="float-el" style="top:60%; left:2%; animation-duration:6.5s; animation-delay:1.5s;">
+      <svg width="28" height="28" viewBox="0 0 28 28"><path d="M14 2 L16 10 L24 10 L18 15 L20 23 L14 18 L8 23 L10 15 L4 10 L12 10 Z" fill="#ffd166" opacity="0.7"/></svg>
+    </div>
+    <div class="float-el" style="top:40%; right:3%; animation-duration:4.5s; animation-delay:0.3s;">
+      <svg width="22" height="22" viewBox="0 0 22 22"><path d="M11 1 L12.8 7.6 L19.5 7.6 L14.1 11.8 L15.9 18.4 L11 14.2 L6.1 18.4 L7.9 11.8 L2.5 7.6 L9.2 7.6 Z" fill="#c5a8de" opacity="0.8"/></svg>
+    </div>
+    <!-- Heart speech bubble -->
+    <div class="float-el" style="top:20%; left:20%; animation-duration:7s; animation-delay:0.8s; opacity:0.6;">
+      <svg width="44" height="44" viewBox="0 0 44 44"><rect x="4" y="4" width="36" height="30" rx="10" fill="#fce4ec"/><polygon points="12,34 22,44 22,34" fill="#fce4ec"/><path d="M22 20 Q22 12 28 12 Q34 12 34 18 Q34 24 22 28 Q10 24 10 18 Q10 12 16 12 Q22 12 22 20Z" fill="#f4a0b5"/></svg>
+    </div>
+
+    <!-- Rainbow -->
+    <svg class="rainbow-svg" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20,180 Q200,20 380,180" fill="none" stroke="#f4a0b5" stroke-width="18" stroke-linecap="round" opacity="0.5"/>
+      <path d="M40,180 Q200,50 360,180" fill="none" stroke="#ffd166" stroke-width="14" stroke-linecap="round" opacity="0.45"/>
+      <path d="M58,180 Q200,75 342,180" fill="none" stroke="#6dbf7e" stroke-width="11" stroke-linecap="round" opacity="0.4"/>
+      <path d="M74,180 Q200,96 326,180" fill="none" stroke="#7ec8e3" stroke-width="9" stroke-linecap="round" opacity="0.35"/>
+    </svg>
+  </div>
+
+  <img src="Avatar.jpg" alt="Avatar" style="width: 160px; height: 160px; object-fit: cover; border-radius: 50%; border: 4px solid #f4a0b5; box-shadow: 0 4px 24px rgba(244,160,181,0.18); margin-bottom: 18px; background: #fff;" />
+  <div class="hero-badge">✨ 2nd Year Student · FTU Hanoi</div>
+  <h1 class="hero-name">Nguyễn Thị Ngọc Hà</h1>
+  <p class="hero-sub">Finance · Banking</p>
+  <p class="hero-desc">2nd year student majoring in Finance and Banking at Foreign Trade University. Passionate about monetary policy research and developing creative financial solutions. 🌸</p>
+  <div class="hero-tags">
+    <span class="tag">🎓 Foreign Trade University</span>
+    <span class="tag">📊 IELTS 7.0</span>
+    <span class="tag">🏦 Future Bankers</span>
+    <span class="tag">🐍 Python</span>
+    <span class="tag">🏆 Top 5 Business Plan</span>
+  </div>
+  <div class="hero-btns">
+    <a href="#projects" class="btn-primary">View Projects ✨</a>
+    <a href="#contact" class="btn-outline">Connect Now 💌</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-title"><span class="emoji">🌷</span> About Me</div>
+    <div class="section-line"></div>
+    <div class="about-grid reveal">
+      <div class="about-card">
+        <p class="about-text">
+          I am <strong>Nguyễn Thị Ngọc Hà</strong> — a 2nd year student majoring in Finance and Banking at Foreign Trade University, Hanoi.
+          <br><br>
+          I am passionate about monetary policy research and transmission mechanisms in the Vietnamese banking system. Besides academics, I actively participate in competitions and clubs to develop practical skills.
+          <br><br>
+          My dream is to become a financial expert — connecting theory and practice, contributing to the development of Vietnam's banking system. 💕
+        </p>
+      </div>
+      <div class="about-card">
+        <ul class="info-list">
+          <li>
+            <span class="info-icon pink">🎓</span>
+            <span>Foreign Trade University · Finance & Banking</span>
+          </li>
+          <li>
+            <span class="info-icon yellow">📅</span>
+            <span>2nd Year Student</span>
+          </li>
+          <li>
+            <span class="info-icon blue">🌍</span>
+            <span>IELTS 7.0 Academic</span>
+          </li>
+          <li>
+            <span class="info-icon green">🏦</span>
+            <span>Member of Future Bankers Club (FBN)</span>
+          </li>
+          <li>
+            <span class="info-icon pink">🔬</span>
+            <span>School-level Research</span>
+          </li>
+          <li>
+            <span class="info-icon yellow">🏆</span>
+            <span>Top 5 Business Plan Competition 2024</span>
+          </li>
+          <li>
+            <span class="info-icon blue">💌</span>
+            <span>ngocha250706@gmail.com</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-title"><span class="emoji">⭐</span> Skills</div>
+    <div class="section-line"></div>
+    <div class="skills-grid reveal">
+      <div class="skill-card">
+        <div class="skill-card-title">💼 Professional Skills</div>
+        <div class="skill-item">
+          <div class="skill-label"><span>Financial Analysis</span><span>65%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:0%" data-target="65"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label"><span>Excel & Power BI</span><span>70%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:0%" data-target="70"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label"><span>Python (Jupyter)</span><span>45%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:0%" data-target="45"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label"><span>Scientific Research</span><span>60%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:0%" data-target="60"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label"><span>Business Planning</span><span>55%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:0%" data-target="55"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label"><span>Stata 16</span><span>50%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:0%" data-target="50"></div></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">🌟 Soft Skills</div>
+        <div class="skill-item">
+          <div class="skill-label"><span>Tiếng Anh (IELTS 7.0)</span><span>75%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:0%" data-target="75" style="background: linear-gradient(to right, #6dbf7e, #2e7d47);"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label"><span>Teamwork</span><span>80%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:0%" data-target="80"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label"><span>Presentation</span><span>65%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:0%" data-target="65"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label"><span>Data Collection & Processing</span><span>68%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:0%" data-target="68"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label"><span>Report Writing</span><span>70%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:0%" data-target="70"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label"><span>Macroeconomic Analysis</span><span>60%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:0%" data-target="60"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section id="activities">
+  <div class="section-inner">
+    <div class="section-title"><span class="emoji">🌸</span> Activities</div>
+    <div class="section-line"></div>
+    <div class="activities-grid reveal">
+      <div class="activity-card">
+        <div class="activity-icon">🏦</div>
+        <div class="activity-title">Future Bankers Club (FBN)</div>
+        <div class="activity-desc">Active member, participated in regular macroeconomic analysis reports, selected as team leader for Q1/2025.</div>
+      </div>
+      <div class="activity-card">
+        <div class="activity-icon">🔬</div>
+        <div class="activity-title">Scientific Research</div>
+        <div class="activity-desc">Participated in school-level research on monetary policy, completed successfully and received a B+ grade.</div>
+      </div>
+      <div class="activity-card">
+        <div class="activity-icon">🏆</div>
+        <div class="activity-title">Business Plan Competition</div>
+        <div class="activity-desc">Represented the team in the Top 5 out of 47 teams, received the Encouragement Award and "Best ESG Integration" from BIDV.</div>
+      </div>
+      <div class="activity-card">
+        <div class="activity-icon">📊</div>
+        <div class="activity-title">Personal Projects</div>
+        <div class="activity-desc">Self-researched and built financial analysis models, Power BI dashboards, and credit assessment models.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-title"><span class="emoji">💡</span> Personal Projects</div>
+    <div class="section-line"></div>
+    <div class="projects-list">
+
+      <!-- Project 1 -->
+      <div class="project-card reveal">
+        <div class="result-badge">🌟 Điểm A-</div>
+        <div class="project-header">
+          <div class="project-emoji">📈</div>
+          <div class="project-meta">
+            <div class="project-title">Bank Stock Analysis Dashboard</div>
+            <div class="project-time">⏰ Aug – Oct 2024 · Excel + Power BI</div>
+          </div>
+        </div>
+        <p class="project-desc">
+          Built a dashboard analyzing 8 major Vietnamese banks (VCB, CTG, BID, MBB, TCB, VPB, ACB, VIB) over 5 years (2019–2024). The dashboard features 15+ interactive charts tracking P/E, P/B, ROE, ROA, NIM, CIR, NPL. Praised by the professor and recommended for research participation.
+        </p>
+        <div class="project-tags">
+          <span class="ptag">Excel & Power BI</span>
+          <span class="ptag">VietStock API</span>
+          <span class="ptag green">Power Query</span>
+          <span class="ptag blue">Data Visualization</span>
+          <span class="ptag yellow">15+ charts</span>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card reveal">
+        <div class="result-badge">✅ Hoàn thành</div>
+        <div class="project-header">
+          <div class="project-emoji">🤖</div>
+          <div class="project-meta">
+            <div class="project-title">SME Credit Scoring Model</div>
+            <div class="project-time">⏰ Dec 2024 – Feb 2025 · Python</div>
+          </div>
+        </div>
+        <p class="project-desc">
+          Developed a credit risk prediction model for SMEs based on 150 real cases. Used Logistic Regression, Decision Tree, and Random Forest. The model achieved ~82% accuracy, AUC 0.87. Combined both financial (Current Ratio, ROA, Debt-to-Assets) and non-financial factors (company age, size, industry).
+        </p>
+        <div class="project-tags">
+          <span class="ptag">Python · scikit-learn</span>
+          <span class="ptag">Logistic Regression</span>
+          <span class="ptag green">Random Forest</span>
+          <span class="ptag blue">AUC 0.87</span>
+          <span class="ptag yellow">150 cases</span>
+        </div>
+      </div>
+
+      <!-- Project 3: FBN Report -->
+      <div class="project-card reveal" id="fbn">
+        <div class="result-badge">🏅 Top 3 FBN</div>
+        <div class="project-header">
+          <div class="project-emoji">📉</div>
+          <div class="project-meta">
+            <div class="project-title">Vietnam Exchange Rate & Inflation Analysis Report 2025</div>
+            <div class="project-time">⏰ Q4/2024 · Future Bankers Club (FBN)</div>
+          </div>
+        </div>
+        <p class="project-desc">
+          A 35-page report analyzing the impact of USD/VND exchange rate fluctuations on inflation in Vietnam and forecasting the 2025 macroeconomy. The report received 200+ likes and was selected as one of the top 3 FBN reports in 2024. A VietcomBank manager praised the analysis.
+        </p>
+        <div class="project-tags">
+          <span class="ptag">Phân tích Vĩ mô</span>
+          <span class="ptag">Dự báo Tỷ giá</span>
+          <span class="ptag green">Bloomberg · IMF</span>
+          <span class="ptag blue">200+ likes</span>
+        </div>
+        <div class="fbn-stats">
+          <div class="stat-box">
+            <div class="stat-num">200+</div>
+            <div class="stat-label">Likes</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">35</div>
+            <div class="stat-label">Report pages</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">Top 3</div>
+            <div class="stat-label">FBN 2024</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">Q1/2025</div>
+            <div class="stat-label">Next team leader</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-inner">
+    <div class="section-title"><span class="emoji">🔬</span> Research</div>
+    <div class="section-line"></div>
+    <div class="research-card reveal">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <span style="font-size:2rem;">📜</span>
+        <div>
+          <div class="research-title">Impact of Tight Monetary Policy on Credit Growth and Inflation in Vietnam (2020–2024)</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+        <span class="tag" style="font-size:0.82rem;">📅 T3–T11/2024</span>
+        <span class="tag" style="font-size:0.82rem;">👥 Group of 4 students</span>
+        <span class="tag" style="font-size:0.82rem;">👨‍🏫 Dr. Nguyễn Văn Minh</span>
+        <span class="tag" style="font-size:0.82rem;">🌟 Điểm B+</span>
+        <span class="tag" style="font-size:0.82rem;">⚙️ Stata 16 · VAR Model</span>
+      </div>
+
+      <div class="research-grid">
+        <div class="research-block">
+          <div class="research-block-title">Research Objectives</div>
+          <ul class="research-list">
+            <li>Analyze the relationship between refinancing rates and credit growth</li>
+            <li>Assess the impact of reserve requirements on bank liquidity</li>
+            <li>Examine the effectiveness of credit limits in controlling inflation</li>
+          </ul>
+        </div>
+        <div class="research-block">
+          <div class="research-block-title">Methodology</div>
+          <ul class="research-list">
+            <li>Vector Autoregression (VAR) model</li>
+            <li>Quarterly time series data Q1/2020 – Q2/2024</li>
+            <li>Software: Stata 16, Excel</li>
+            <li>Variables: Interest rates, reserve requirements, credit, CPI</li>
+          </ul>
+        </div>
+        <div class="research-block">
+          <div class="research-block-title">Key Findings</div>
+          <ul class="research-list">
+            <li>Refinancing rates negatively affect credit with a lag of 1–2 quarters</li>
+            <li>Reserve requirements strongly impact short-term liquidity</li>
+            <li>Credit limits are only moderately effective in controlling inflation</li>
+            <li>USD/VND exchange rate is positively correlated with inflation</li>
+          </ul>
+        </div>
+        <div class="research-block">
+          <div class="research-block-title">Role & Lessons Learned</div>
+          <ul class="research-list">
+            <li>Responsible for collecting data from SBV, GSO, IMF</li>
+            <li>Ran VAR model and handled Granger causality test</li>
+            <li>Developed time series analysis skills in Stata</li>
+            <li>Teamwork and task allocation skills</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITION -->
+<section id="competition">
+  <div class="section-inner">
+    <div class="section-title"><span class="emoji">🏆</span> Competition</div>
+    <div class="section-line"></div>
+    <div class="comp-card reveal">
+      <div class="comp-title">FTU Innovation Challenge — Business Plan 2024</div>
+      <div class="comp-subtitle">💡 GreenCredit: Green credit platform for sustainable startups · 47 teams · Group of 4</div>
+
+      <div class="comp-awards">
+        <div class="award-item">
+          <div class="award-icon">🥇</div>
+          <div class="award-text">Top 5/47 teams</div>
+          <div class="award-sub">Finalist</div>
+        </div>
+        <div class="award-item">
+          <div class="award-icon">🎖️</div>
+          <div class="award-text">Encouragement Award</div>
+          <div class="award-sub">5 million VND</div>
+        </div>
+        <div class="award-item">
+          <div class="award-icon">🌱</div>
+          <div class="award-text">Best ESG Integration</div>
+          <div class="award-sub">From BIDV partner</div>
+        </div>
+        <div class="award-item">
+          <div class="award-icon">💼</div>
+          <div class="award-text">Hackathon Invitation</div>
+          <div class="award-sub">Techcombank Oct/2024</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="font-size:0.85rem;font-weight:800;color:var(--pink-deep);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">🎤 Q&A with Bank CEO Judges</div>
+        <div class="comp-qna">
+          <div class="qna-item">
+            <div class="qna-q">❓ "How do you ensure startups don't fake ESG metrics?"</div>
+            <div class="qna-a">✅ Independent verification system, collaborating with international ESG certifiers to ensure transparency.</div>
+          </div>
+          <div class="qna-item">
+            <div class="qna-q">❓ "Why don't banks do it themselves instead of using your platform?"</div>
+            <div class="qna-a">✅ Banks lack specialized ESG expertise — the platform helps reduce evaluation costs and increases efficiency.</div>
+          </div>
+          <div class="qna-item">
+            <div class="qna-q">❓ "Is your revenue model sustainable as competition increases?"</div>
+            <div class="qna-a">✅ First-mover advantage + strong network effect + plan to expand to ASEAN countries.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <span class="ptag green">ESG · Fintech</span>
+        <span class="ptag">GreenScore Framework</span>
+        <span class="ptag blue">Market Research 50 startups</span>
+        <span class="ptag yellow">Presented to 150+ people</span>
+        <span class="ptag">BIDV Director requested contact 😊</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-title">Let's Connect! 💕</div>
+    <p class="contact-sub">I'm open to internship and research collaboration opportunities ✨</p>
+    <div class="contact-links">
+      <a href="mailto:ngocha250706@gmail.com" class="contact-btn">
+        <span>📧</span> ngocha250706@gmail.com
+      </a>
+      <a href="https://www.facebook.com/ngoc.ha.250706" target="_blank" class="contact-btn">
+        <span>💙</span> Facebook
+      </a>
+      <a href="https://www.instagram.com/ntngcha/" target="_blank" class="contact-btn">
+        <span>🌸</span> @ntngcha
+      </a>
+    </div>
+  </div>
+
+  <!-- Bottom flowers decoration -->
+  <div style="margin-top:60px;display:flex;justify-content:center;gap:20px;opacity:0.7;">
+    <svg width="40" height="50" viewBox="0 0 40 50"><ellipse cx="20" cy="36" rx="12" ry="14" fill="#ffd166"/><ellipse cx="20" cy="40" rx="9" ry="10" fill="#f5836b"/><rect x="18" y="14" width="4" height="24" rx="2" fill="#6dbf7e"/><ellipse cx="12" cy="20" rx="8" ry="5" fill="#6dbf7e" transform="rotate(-30 12 20)"/></svg>
+    <svg width="36" height="50" viewBox="0 0 36 50"><ellipse cx="18" cy="36" rx="11" ry="14" fill="#f4a0b5"/><ellipse cx="18" cy="40" rx="8" ry="10" fill="#e57fa0"/><rect x="16" y="14" width="4" height="24" rx="2" fill="#6dbf7e"/></svg>
+    <svg width="44" height="52" viewBox="0 0 44 52"><ellipse cx="22" cy="37" rx="13" ry="15" fill="#ffd166"/><ellipse cx="22" cy="41" rx="10" ry="11" fill="#f5836b"/><rect x="20" y="12" width="4" height="27" rx="2" fill="#6dbf7e"/><ellipse cx="14" cy="19" rx="9" ry="5" fill="#6dbf7e" transform="rotate(-35 14 19)"/></svg>
+    <svg width="36" height="50" viewBox="0 0 36 50"><ellipse cx="18" cy="36" rx="11" ry="14" fill="#c5a8de"/><ellipse cx="18" cy="40" rx="8" ry="10" fill="#a87bc8"/><rect x="16" y="14" width="4" height="24" rx="2" fill="#6dbf7e"/></svg>
+    <svg width="40" height="50" viewBox="0 0 40 50"><ellipse cx="20" cy="36" rx="12" ry="14" fill="#f4a0b5"/><ellipse cx="20" cy="40" rx="9" ry="10" fill="#e57fa0"/><rect x="18" y="14" width="4" height="24" rx="2" fill="#6dbf7e"/><ellipse cx="28" cy="20" rx="8" ry="5" fill="#6dbf7e" transform="rotate(30 28 20)"/></svg>
+  </div>
+</section>
+
+<footer>
+  <p>© 2024 Nguyễn Thị Ngọc Hà · Student at Foreign Trade University · Finance & Banking 🌸</p>
+</footer>
+
+<script>
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// Skill bars animation
+const skillObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const fills = entry.target.querySelectorAll('.skill-fill');
+      fills.forEach(fill => {
+        const target = fill.dataset.target;
+        fill.style.width = target + '%';
+      });
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.skill-card').forEach(card => skillObserver.observe(card));
+</script>
+</body>
+</html>
